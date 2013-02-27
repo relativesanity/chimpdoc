@@ -26,6 +26,9 @@ class Chimpdoc::Blog
     published_articles.find { |a| slug == a.slug }
   end
 
+  # Public: Refresh the article cache from the store, if we have a cache specified
+  #
+  # This is designed to be called from a rake task or other automated system
   def refresh_articles
     if cache
       articles = get_articles
