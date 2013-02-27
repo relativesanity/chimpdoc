@@ -2,14 +2,6 @@ class Chimpdoc::Blog
 
   CACHE_KEY = 'articles'
 
-  def reload_articles
-    if cache
-      cache.write(CACHE_KEY, load_articles)
-    else
-      load_articles
-    end
-  end
-
   def cover_article
     feed.first
   end
@@ -32,6 +24,13 @@ class Chimpdoc::Blog
 
   def fetch_article(slug)
     published_articles.find { |a| slug == a.slug }
+  end
+
+  def refresh_articles
+    if cache
+      articles = get_articles
+      cache.write(CACHE_KEY, articles)
+    end
   end
 
   private
