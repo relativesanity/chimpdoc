@@ -48,13 +48,13 @@ class Chimpdoc::Blog
 
   def articles
     if cache
-      cache.fetch(CACHE_KEY) { load_articles }
+      cache.fetch(CACHE_KEY) { get_articles }
     else
-      load_articles
+      get_articles
     end
   end
 
-  def load_articles
+  def get_articles
     article_store.get_articles
   end
 
