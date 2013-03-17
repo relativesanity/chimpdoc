@@ -22,8 +22,16 @@ class Chimpdoc::Blog
     pending_articles.sort_by(&:published_on)
   end
 
+  def draft_feed
+    draft_articles.sort_by(&:published_on)
+  end
+
   def fetch_article(slug)
     published_articles.find { |a| slug == a.slug }
+  end
+
+  def preview_article(slug)
+    articles.find { |a| slug == a.slug }
   end
 
   def refresh_articles
@@ -36,13 +44,19 @@ class Chimpdoc::Blog
   private
 
   def published_articles
-    return [] unless articles
-    articles.select(&:published?)
+    filtered_articles(&:published?)
   end
 
   def pending_articles
-    return [] unless articles
-    articles.select(&:pending?)
+    filtered_articles(&:pending?)
+  end
+
+  def draft_articles
+    filtered_articles(&:draft?)
+  end
+
+  def filtered_articles(&status)
+    articles ? articles.select(&status) : []
   end
 
   def articles
