@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    Chimpdoc (0.0.1)
+    chimpdoc (0.0.1)
       dropbox-sdk
+      rake
 
 GEM
   remote: https://rubygems.org/
@@ -11,6 +12,7 @@ GEM
     dropbox-sdk (1.5.1)
       json
     json (1.7.7)
+    rake (10.0.3)
     rspec (2.12.0)
       rspec-core (~> 2.12.0)
       rspec-expectations (~> 2.12.0)
@@ -24,5 +26,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  Chimpdoc!
+  chimpdoc!
   rspec
