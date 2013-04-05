@@ -21,8 +21,6 @@ class DropboxSetup
     end
   end
 
-  private
-
   def prompt_for_app_credentials
     puts "Enter App Key:"
     @app_key = STDIN.gets.chomp
