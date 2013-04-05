@@ -50,12 +50,19 @@ class DropboxSetup
   end
 
   def config
-    config = {
-      app_key: app_key,
-      app_secret: app_secret,
-      access_token_key: access_token_key,
-      access_token_secret: access_token_secret
-    }
+    config = <<-RUBY
+      Chimpdoc.config do |c|
+        c.storage(:dropbox) do |s|
+        s.app = {
+          :key => '#{app_key}',
+          :secret => '#{app_secret}'
+        }
+        s.token = {
+          :key => '#{access_token_key}',
+          :secret => '#{access_token_secret}'
+        }
+      end
+    RUBY
     puts config
   end
 
