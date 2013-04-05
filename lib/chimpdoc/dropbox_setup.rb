@@ -44,6 +44,11 @@ class DropboxSetup
     end
   end
 
+  def prompt_for_authorisation(session)
+    puts "Please visit #{session.get_authorize_url} and hit 'Allow', then hit Enter here:"
+    STDIN.gets.chomp
+  end
+
   def config
     config = {
       app_key: app_key,
@@ -54,8 +59,4 @@ class DropboxSetup
     puts config
   end
 
-  def prompt_for_authorisation(session)
-    puts "Please visit #{session.get_authorize_url} and hit 'Allow', then hit Enter here:"
-    STDIN.gets.chomp
-  end
 end
