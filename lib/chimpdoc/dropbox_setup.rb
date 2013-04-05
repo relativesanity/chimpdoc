@@ -19,7 +19,7 @@ class DropboxSetup
     puts "Enter App Key:"
     @app_key = STDIN.gets.chomp
 
-    puts "Enter App Key:"
+    puts "Enter App Secret:"
     @app_secret = STDIN.gets.chomp
   end
 
