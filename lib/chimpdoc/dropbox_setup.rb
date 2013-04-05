@@ -12,8 +12,16 @@ class DropboxSetup
   end
 
   def self.perform
-    DropboxSetup.new.tap { |setup| yield setup }
+    DropboxSetup.new.tap do |setup|
+      setup.prompt_for_app_credentials
+
+      setup.authorise
+
+      setup.config
+    end
   end
+
+  private
 
   def prompt_for_app_credentials
     puts "Enter App Key:"
@@ -45,8 +53,6 @@ class DropboxSetup
     }
     puts config
   end
-
-  private
 
   def prompt_for_authorisation(session)
     puts "Please visit #{session.get_authorize_url} and hit 'Allow', then hit Enter here:"
