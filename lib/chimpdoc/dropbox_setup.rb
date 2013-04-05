@@ -1,4 +1,5 @@
 require "dropbox_sdk"
+require "io/console"
 
 class DropboxSetup
 
@@ -23,10 +24,10 @@ class DropboxSetup
 
   def prompt_for_app_credentials
     puts "Enter App Key:"
-    @app_key = STDIN.gets.chomp
+    @app_key = STDIN.noecho(&:gets).chomp
 
     puts "Enter App Secret:"
-    @app_secret = STDIN.gets.chomp
+    @app_secret = STDIN.noecho(&:gets).chomp
   end
 
   def authorise
