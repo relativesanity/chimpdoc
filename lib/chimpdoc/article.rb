@@ -33,6 +33,10 @@ class Chimpdoc::Article < Struct.new(:slug, :title, :format, :content, :updated_
     Draft == status
   end
 
+  def word_count
+    @word_count ||= content.split.length
+  end
+
   def status
     if published_on
       if Date.today >= published_on
