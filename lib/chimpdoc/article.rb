@@ -7,7 +7,7 @@ class Chimpdoc::Article < Struct.new(:slug, :title, :format, :content, :updated_
   def self.from_file(path_to_file)
     format, slug = parse_path_to_file(path_to_file)
     title, style, published_on, content = parse_article_source(File.read(path_to_file))
-    updated_at = DateTime.parse(File.mtime(path_to_file))
+    updated_at = DateTime.parse(File.mtime(path_to_file).to_s)
 
     new(slug, title, format, content, updated_at, style, published_on)
   end
