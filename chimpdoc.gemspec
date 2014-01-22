@@ -12,6 +12,7 @@ Gem::Specification.new do |s|
   s.description = %q{A super-simple publication system built around documents and files}
 
   s.add_dependency 'dropbox-sdk'
+  s.add_dependency 'rake'
   s.add_development_dependency 'rspec'
 
   s.files = `git ls-files`.split("\n")
